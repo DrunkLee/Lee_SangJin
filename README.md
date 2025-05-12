@@ -30,8 +30,8 @@
 
 - ✅ 주요 기여
   - 다양한 Loss 조합 실험 및 구현 (`loss/`)
-  - TensorFlow 기반 모델을 PyTorch로 변환하여 구현 (`models/DUCKNet/`, `models/UNet/`)
-  - Spatial & Channel Attention을 적용한 Custom UNet 설계 (`models/CUSTOM/`)
+  - TensorFlow 기반 모델을 PyTorch로 변환하여 구현 (`models/DUCKNet/`)
+  - [Spatial & Channel Attention](https://arxiv.org/pdf/1807.06521)을 적용한 Custom UNet 설계 (`models/CUSTOM/`)
 
 ---
 
