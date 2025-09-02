@@ -47,3 +47,24 @@
 - ✅ 주요 기여
   - Annotation 가이드라인 수립 및 전체 데이터 정제
   - REST API를 활용한 학습 현황 실시간 알림 기능 구현 (`services/`)
+
+---
+
+### 4. AI Competition
+> 양한 산업 분야의 실제 데이터를 다루며 문제 해결 능력을 기르기 위해 AI 경진대회에 꾸준히 참여하고 있습니다. 데이터 정제부터 모델링, 성능 개선까지 End-to-End로 프로젝트를 수행하며 실전 역량을 강화하고 있습니다.
+
+#### 1) 식음업장 메뉴 수요 예측 (Private 55위)
+> 시계열 특성을 가진 식음업장 데이터를 분석하여 메뉴별 수요를 예측하는 회귀 문제입니다. (Public 39위)
+
+🔗 **대회 링크**: [식음업장 메뉴 수요 예측](https://dacon.io/competitions/official/236559/overview/description)
+- 결과
+    - Public  : [**39** / 820]
+    - Private : [**55** / 820]
+
+#### 2) 고객 지원 등급 분류 (Private ??)
+> 고객의 서비스 이용 데이터와 계약 정보를 분석하여, 지원 필요 수준을 사전에 예측하는 분류 문제입니다.
+
+🔗 **대회 링크**: [고객 지원 등급 분류](https://dacon.io/competitions/official/236562/overview/description)
+- 결과
+    - Public  : [**??** / ??]
+    - Private : [**??** / ??]

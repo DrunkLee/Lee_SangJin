@@ -1,0 +1,10 @@
+# 고객 지원 등급 분류 폴더 ignore
+AI-Competition/dacon/고객_지원_등급_분류/customer_support/
+AI-Competition/dacon/고객_지원_등급_분류/data/
+AI-Competition/dacon/고객_지원_등급_분류/__pycache__/
+AI-Competition/dacon/고객_지원_등급_분류/train_result/
+AI-Competition/dacon/고객_지원_등급_분류/train_results/
+AI-Competition/dacon/고객_지원_등급_분류/*.png
+AI-Competition/dacon/고객_지원_등급_분류/*.jpg
+AI-Competition/dacon/고객_지원_등급_분류/*.jpeg
+AI-Competition/dacon/고객_지원_등급_분류/*.csv
