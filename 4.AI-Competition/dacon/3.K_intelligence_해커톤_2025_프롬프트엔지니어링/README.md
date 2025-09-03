@@ -13,8 +13,11 @@ samples.csv
 - output : 입력 문장에 대해 4가지 속성으로 분류한 출력 결과
 
 ## 평가
-> Public score : 전체 테스트 데이터 100%
-> Private score : 예선 종료 시점의 Public Score
+
+<img width="466" height="328" alt="Image" src="https://github.com/user-attachments/assets/cdbb9d61-14ac-426d-8337-f38b02d14804" />
+
+> - Public score : 전체 테스트 데이터 100%
+> - Private score : 예선 종료 시점의 Public Score
 
 - **평가 산식**(1점 만점)
   - 모델 분류 정확도 (80%)
