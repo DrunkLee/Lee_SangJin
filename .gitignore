@@ -1,10 +1,16 @@
-# 고객 지원 등급 분류 폴더 ignore
-4. AI-Competition/dacon/고객_지원_등급_분류/customer_support/
-4. AI-Competition/dacon/고객_지원_등급_분류/data/
-4. AI-Competition/dacon/고객_지원_등급_분류/__pycache__/
-4. AI-Competition/dacon/고객_지원_등급_분류/train_result/
-4. AI-Competition/dacon/고객_지원_등급_분류/train_results/
-4. AI-Competition/dacon/고객_지원_등급_분류/*.png
-4. AI-Competition/dacon/고객_지원_등급_분류/*.jpg
-4. AI-Competition/dacon/고객_지원_등급_분류/*.jpeg
-4. AI-Competition/dacon/고객_지원_등급_분류/*.csv
+# dacon/고객 지원 등급 분류 폴더
+4.AI-Competition/dacon/2.고객_지원_등급_분류/customer_support/
+4.AI-Competition/dacon/2.고객_지원_등급_분류/data/
+4.AI-Competition/dacon/2.고객_지원_등급_분류/__pycache__/
+4.AI-Competition/dacon/2.고객_지원_등급_분류/train_result/
+4.AI-Competition/dacon/2.고객_지원_등급_분류/train_results/
+4.AI-Competition/dacon/2.고객_지원_등급_분류/*.png
+4.AI-Competition/dacon/2.고객_지원_등급_분류/*.jpg
+4.AI-Competition/dacon/2.고객_지원_등급_분류/*.jpeg
+4.AI-Competition/dacon/2.고객_지원_등급_분류/*.csv
+
+# dacon/K intelligence 해커톤 2025
+4.AI-Competition/dacon/3.K_intelligence_해커톤_2025_프롬프트엔지니어링/*.csv
+4.AI-Competition/dacon/3.K_intelligence_해커톤_2025_프롬프트엔지니어링/.venv/
+4.AI-Competition/dacon/3.K_intelligence_해커톤_2025_프롬프트엔지니어링/*.pickle
+4.AI-Competition/dacon/3.K_intelligence_해커톤_2025_프롬프트엔지니어링/__pycache__/

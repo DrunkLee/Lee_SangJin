@@ -54,7 +54,7 @@
 > 다양한 산업 분야의 실제 데이터를 다루며 문제 해결 능력을 기르기 위해 AI 경진대회에 꾸준히 참여하고 있습니다. 데이터 정제부터 모델링, 성능 개선까지 End-to-End로 프로젝트를 수행하며 실전 역량을 강화하고 있습니다.
 
 #### 1) 식음업장 메뉴 수요 예측 (Private 55위)
-> 시계열 특성을 가진 식음업장 데이터를 분석하여 메뉴별 수요를 예측하는 회귀 문제입니다. (Public 39위)
+> 시계열 특성을 가진 식음업장 데이터를 분석하여 메뉴별 수요를 예측하는 회귀 문제입니다.
 
 🔗 **대회 링크**: [식음업장 메뉴 수요 예측](https://dacon.io/competitions/official/236559/overview/description)
 - 결과
@@ -65,6 +65,14 @@
 > 고객의 서비스 이용 데이터와 계약 정보를 분석하여, 지원 필요 수준을 사전에 예측하는 분류 문제입니다.
 
 🔗 **대회 링크**: [고객 지원 등급 분류](https://dacon.io/competitions/official/236562/overview/description)
+- 결과
+    - Public  : [**??** / ??]
+    - Private : [**??** / ??]
+
+#### 3) K intelligence 해커톤 2025 <프롬프트엔지니어링> (Private ??)
+> 참가자는 K intelligence의 GPT4o 기반 Custom 모델(beta)을 활용해, 유저 프롬프트만으로 문제를 해결할 수 있는 시스템 프롬프트를 설계해야 합니다.
+
+🔗 **대회 링크**: [K intelligence 해커톤 2025](https://dacon.io/competitions/official/236552/overview/description)
 - 결과
     - Public  : [**??** / ??]
     - Private : [**??** / ??]
