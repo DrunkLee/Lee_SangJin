@@ -1,8 +1,15 @@
 from lightgbm import LGBMClassifier
 from lightgbm import early_stopping
+
 from metric import MacroF1Score
 from sklearn.model_selection import StratifiedKFold
 from datetime import datetime
+
+from imblearn.pipeline import Pipeline
+from imblearn.over_sampling import SMOTE
+from imblearn.combine import SMOTEENN
+from imblearn.under_sampling import RandomUnderSampler
+
 import os
 import joblib
 import pandas as pd
@@ -128,6 +135,95 @@ class ModelHandler:
         for i,row in final_importance.iterrows():
             print(f"{i+1:2d}위: {row['feature']} (평균 중요도: {row['importance']:.2f})")
     
+    def fit_kfold_over(self, df: pd.DataFrame, feature_cols:list, target_col:str, n_splits: int = 3):
+        print("[INFO] SMOTE K-Fold로 검증을 시작합니다.")
+        X = df[feature_cols]
+        y = df[target_col]
+        skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=self.seed)
+        fold_scores = []
+        pipeline = Pipeline([
+            ('sampler', SMOTE(random_state=self.seed)),
+            ("classifier", LGBMClassifier(**self.model.get_params()))
+        ])
+        
+        for fold, (train_idx, val_idx) in enumerate(skf.split(X,y)):
+            X_train, y_train = X.iloc[train_idx], y.iloc[train_idx]
+            X_val, y_val = X.iloc[val_idx], y.iloc[val_idx]
+            pipeline.fit(X_train, y_train,
+                         classifier__eval_set=[(X_val, y_val)],
+                         classifier__callbacks=[early_stopping(stopping_rounds=30, verbose=False)])
+            fold_preds = pipeline.predict(X_val)
+            self.metric.update(y_val.to_list(), fold_preds)
+            score = self.metric.result()
+            self.metric.reset()
+            fold_scores.append(score)
+            print(f"[INFO] Oversampling Fold {fold} Macro F1 Score: {score:.4f}")
+        mean_score = np.mean(fold_scores)
+        print("="*50)
+        print(f"[INFO] {n_splits}-Fold 교차 검증 (Oversampling) 평균 Macro F1 Score: {mean_score:.4f}")
+        
+    def fit_kfold_smoteenn(self, df: pd.DataFrame, feature_cols:list, target_col:str, n_splits: int = 3):
+        print("[INFO] SMOTE K-Fold로 검증을 시작합니다.")
+        X = df[feature_cols]
+        y = df[target_col]
+        skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=self.seed)
+        fold_scores = []
+        pipeline = Pipeline([
+            ('sampler', SMOTEENN(random_state=self.seed)),
+            ("classifier", LGBMClassifier(**self.model.get_params()))
+        ])
+        
+        for fold, (train_idx, val_idx) in enumerate(skf.split(X,y)):
+            X_train, y_train = X.iloc[train_idx], y.iloc[train_idx]
+            X_val, y_val = X.iloc[val_idx], y.iloc[val_idx]
+            pipeline.fit(X_train, y_train,
+                         classifier__eval_set=[(X_val, y_val)],
+                         classifier__callbacks=[early_stopping(stopping_rounds=30, verbose=False)])
+            fold_preds = pipeline.predict(X_val)
+            self.metric.update(y_val.to_list(), fold_preds)
+            score = self.metric.result()
+            self.metric.reset()
+            fold_scores.append(score)
+            print(f"[INFO] Oversampling Fold {fold} Macro F1 Score: {score:.4f}")
+        mean_score = np.mean(fold_scores)
+        print("="*50)
+        print(f"[INFO] {n_splits}-Fold 교차 검증 (Oversampling) 평균 Macro F1 Score: {mean_score:.4f}")
+        
+    def fit_kfold_under(self, df: pd.DataFrame, feature_cols: list, target_col: str, n_splits=3):
+        print("[INFO] Random 언더샘플링을 적용한 K-FOLD 검증을 시작합니다.")
+        X = df[feature_cols]
+        y = df[target_col]
+        
+        skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=self.seed)
+        fold_scores = []
+        
+        # 샘플링과 모델을 파이프라인으로 묶습니다.
+        pipeline = Pipeline([
+            ('sampler', RandomUnderSampler(random_state=self.seed)),
+            ('classifier', LGBMClassifier(**self.model.get_params()))
+        ])
+
+        for fold, (train_idx, val_idx) in enumerate(skf.split(X, y)):
+            X_train, y_train = X.iloc[train_idx], y.iloc[train_idx]
+            X_val, y_val = X.iloc[val_idx], y.iloc[val_idx]
+
+            pipeline.fit(X_train, y_train,
+                         classifier__eval_set=[(X_val, y_val)],
+                         classifier__callbacks=[early_stopping(stopping_rounds=30, verbose=False)])
+
+            fold_pred = pipeline.predict(X_val)
+            
+            self.metric.update(y_val.to_list(), fold_pred)
+            score = self.metric.result()
+            self.metric.reset()
+            
+            fold_scores.append(score)
+            print(f"[INFO] Undersampling Fold {fold} Macro F1 Score: {score:.4f}")
+
+        mean_score = np.mean(fold_scores)
+        print("="*50)
+        print(f"[INFO] {n_splits}-Fold 교차 검증 (Undersampling) 평균 Macro F1 Score: {mean_score:.4f}")
+
     def find_best_params(self, df, feature_cols: list, target_col: str, n_trials : int = 50, n_splits: int = 3):
         print(f"[INFO] Optuna를 사용한 하이퍼파라미터 튜닝을 시작합니다. (n_trials={n_trials})")
         def objective(trial):

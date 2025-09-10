@@ -32,3 +32,4 @@ if is_test:
 else:
     model = ModelHandler(seed=42)
     model.fit_kfold(train_processed, feature_cols, target_col)
+    model.fit_kfold_smoteenn(train_processed, feature_cols, target_col)

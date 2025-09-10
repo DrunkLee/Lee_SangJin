@@ -24,13 +24,14 @@ class PromptAnalysis:
 
         category_columns = ["유형", "극성", "시제", "명확성"]
         full_report = defaultdict(lambda: defaultdict(dict))
-
+        target_features = ['NNG','VA','VXV', 'VX','MAG', 'EFN','EFQ','EPT','ETD','NNB']
+        
         for category in tqdm(category_columns, desc="Analyzing Categories"):
             grouped = self.df.groupby(category)
             for label, group in grouped:
                 all_pos_tags = [tag for tags_list in group['pos_tags'] for tag in tags_list]
-                unique_pos_tags = sorted(list({tag for word, tag in all_pos_tags}))
-                for feature in unique_pos_tags:
+                # unique_pos_tags = sorted(list({tag for word, tag in all_pos_tags})) # 모든 형태소
+                for feature in target_features:
                     feature_words = [
                         word for word, tag in all_pos_tags
                         if tag == feature and len(word) >= 1

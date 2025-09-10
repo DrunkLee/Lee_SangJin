@@ -14,3 +14,8 @@
 4.AI-Competition/dacon/3.K_intelligence_해커톤_2025_프롬프트엔지니어링/.venv/
 4.AI-Competition/dacon/3.K_intelligence_해커톤_2025_프롬프트엔지니어링/*.pickle
 4.AI-Competition/dacon/3.K_intelligence_해커톤_2025_프롬프트엔지니어링/__pycache__/
+4.AI-Competition/dacon/3.K_intelligence_해커톤_2025_프롬프트엔지니어링/analysis_report_*.txt
+
+# dacon/이상신호 감지 기반 비정상 작동 진단
+4.AI-Competition/dacon/4.이상신호_감지_기반_비정상_작동_진단/data/
+4.AI-Competition/dacon/4.이상신호_감지_기반_비정상_작동_진단/.venv/
